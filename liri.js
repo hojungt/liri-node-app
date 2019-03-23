@@ -20,13 +20,13 @@ var Spotify = require('node-spotify-api');
 var userInput = process.argv.slice(3).join(" ");
 console.log(userInput);
 
-// 0. CLI Command
+// 0. CLI command operator
 
 var operator = process.argv[2];
 switch (operator) {
-    // case 'concert-this':
-    //     movieThis();
-    //     break;
+    case 'concert-this':
+        concertThis();
+        break;
     case 'spotify-this-song':
         spotifyThisSong();
         break;
@@ -41,6 +41,10 @@ switch (operator) {
 // ========================================================================
 // 1. node "concert-this"
 
+function concertThis() {
+
+}
+
 
 // ========================================================================
 // 2. node "spotify-this-song"
@@ -51,16 +55,26 @@ function spotifyThisSong() {
     // (code from npmjs.com)
     var spotify = new Spotify(keys.spotify);
 
-    spotify.search({ type: 'track', query: userInput, limit: 1 }, function(err, data) {
+    if (!userInput) {
+        userInput = 'The Sign';
+    }
+
+    spotify.search({ type: 'track', query: userInput }, function(err, data) {
         if (err) {
-          return console.log('Error occurred: ' + err);
+            return console.log('Error occurred: ' + err);
         }
-    // console.log(data);
-    console.log('Artist(s): ' + data.tracks.items[0].album.artists[0].name);
-    console.log('Song Name: ' + data.tracks.items[0].name);
-    console.log('Preview: ' + data.tracks.items[0].preview_url);
-    console.log('Album: ' + data.tracks.items[0].album.name);
-    });    
+        else if (userInput == 'The Sign'){
+            i = 9;
+        }
+        else {
+            i = 0;
+        }
+        // console.log(data);
+        console.log('Artist(s): ' + data.tracks.items[i].album.artists[0].name);
+        console.log('Song Name: ' + data.tracks.items[i].name);
+        console.log('Preview: ' + data.tracks.items[i].preview_url);
+        console.log('Album: ' + data.tracks.items[i].album.name);
+    });        
 }
 
 // ========================================================================

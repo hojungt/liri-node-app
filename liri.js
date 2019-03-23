@@ -18,7 +18,7 @@ var Spotify = require('node-spotify-api');
 // 0. user input into string
 
 var userInput = process.argv.slice(3).join(" ");
-console.log(userInput);
+// console.log(userInput);
 
 // 0. CLI command operator
 
@@ -43,6 +43,28 @@ switch (operator) {
 
 function concertThis() {
 
+    var artist = userInput;
+    var queryUrl = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
+
+    axios.get(queryUrl)
+    .then(response => {
+        if (!response.data[0]) {
+            console.log('=======================================================================');
+            console.log('No concert information found based on your request :(');
+        }
+        // console.log(response.data);
+        for (i=0; i<response.data.length; i++){
+            console.log('=======================================================================');
+            console.log('Venue Name: ' + response.data[i].venue.name);
+            if (!response.data[i].venue.region) {
+                console.log('Venue Location: ' + response.data[i].venue.city + ', ' + response.data[i].venue.country);
+            }
+            else {
+                console.log('Venue Location: ' + response.data[i].venue.city + ', ' + response.data[i].venue.region + ', ' + response.data[i].venue.country);
+            }
+            console.log('Concert Time: ' + moment(response.data[i].datetime).format("L"));
+        }
+    });
 }
 
 
@@ -70,6 +92,7 @@ function spotifyThisSong() {
             i = 0;
         }
         // console.log(data);
+        console.log('=======================================================================');
         console.log('Artist(s): ' + data.tracks.items[i].album.artists[0].name);
         console.log('Song Name: ' + data.tracks.items[i].name);
         console.log('Preview: ' + data.tracks.items[i].preview_url);
@@ -92,6 +115,7 @@ function movieThis() {
     axios.get(queryUrl)
     .then(response => {
         // console.log(response.data)
+        console.log('=======================================================================');
         console.log('Title: ' + response.data.Title);
         console.log('Year Release: ' + response.data.Year);
         console.log('Rating (IMDB): ' + response.data.imdbRating);

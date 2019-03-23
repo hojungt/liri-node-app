@@ -27,9 +27,9 @@ switch (operator) {
     // case 'concert-this':
     //     movieThis();
     //     break;
-    // case 'spotify-this-song':
-    //     spotifyThisSong();
-    //     break;
+    case 'spotify-this-song':
+        spotifyThisSong();
+        break;
     case 'movie-this':
         movieThis();
         break;
@@ -37,7 +37,6 @@ switch (operator) {
     //     doWhatItSays();
     //     break;
 }
-
 
 // ========================================================================
 // 1. node "concert-this"
@@ -47,15 +46,27 @@ switch (operator) {
 // 2. node "spotify-this-song"
 
 // access keys information
+// (code from npmjs.com)
 // var spotify = new Spotify(keys.spotify);
 
-// spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
-//     if (err) {
-//       return console.log('Error occurred: ' + err);
-//     }
-   
-//   console.log(data); 
-//   });
+function spotifyThisSong() {
+
+    var spotify = new Spotify(keys.spotify);
+
+    spotify.search({ type: 'track', query: userInput, limit: 1 }, function(err, data) {
+        if (err) {
+          return console.log('Error occurred: ' + err);
+        }
+    // console.log(data); 
+    // for (i=0; i<data.tracks.items[0].album.artists.length; i++){
+    //     console.log('Artist(s): ' + data.tracks.items[0].album.artists[i]);
+    // }
+    console.log('Artist(s): ' + data.tracks.items[0].album.artists);
+    console.log('Song Name: ' + data.tracks.items[0].name);
+    console.log('Preview: ' + data.tracks.items[0].preview_url);
+    console.log('Album: ' + data.tracks.items[0].album.name);
+    });    
+}
 
 // ========================================================================
 // 3. node "movie-this"

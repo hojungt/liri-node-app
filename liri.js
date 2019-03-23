@@ -15,19 +15,10 @@ var moment = require('moment');
 var Spotify = require('node-spotify-api');
 
 // ========================================================================
-// 0. User Input
-
-// var userInput = process.argv[3];
-// if (process.argv.length > 4) {
-//     for (i = 4; i < process.argv.length; i++) {
-//         userInput = userInput + " " + process.argv[i];
-//     }
-// };
-// console.log(userInput);
+// 0. user input into string
 
 var userInput = process.argv.slice(3).join(" ");
 console.log(userInput);
-
 
 // 0. CLI Command
 
@@ -70,27 +61,28 @@ switch (operator) {
 // 3. node "movie-this"
 
 function movieThis() {
+    if (!userInput) {
+        userInput = 'Mr. Nobody';
+    }
+
     var movieName = userInput;
     var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
-    console.log(queryUrl);
+    // console.log(queryUrl);
 
     axios.get(queryUrl)
     .then(response => {
         // console.log(response.data)
-        console.log(
-            '\nTitle: ' + response.data.Title,
-            '\nYear Release: ' + response.data.Year,
-            '\nRating (IMDB): ' + response.data.imdbRating,
-            '\nRating (Rotten Tomatoes): ' + response.data.Ratings[1].Value,
-            '\nCountry: ' + response.data.Country,
-            '\nLanguage: ' + response.data.Language,
-            '\nPlot: ' + response.data.Plot,
-            '\nActors: ' + response.data.Actors,
-        )
+        console.log('Title: ' + response.data.Title);
+        console.log('Year Release: ' + response.data.Year);
+        console.log('Rating (IMDB): ' + response.data.imdbRating);
+        if (!response.data.Ratings[1]){console.log('Rating (Rotten Tomatoes): N/A');}
+        else {console.log('Rating (Rotten Tomatoes): ' + response.data.Ratings[1].Value);}
+        console.log('Country: ' + response.data.Country);
+        console.log('Language: ' + response.data.Language);
+        console.log('Plot: ' + response.data.Plot);
+        console.log('Actors: ' + response.data.Actors);
     });
-    
 }
-
 
 // ========================================================================
 // 4. node "do-what-it-says"

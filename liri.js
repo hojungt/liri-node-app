@@ -20,6 +20,7 @@ var Spotify = require('node-spotify-api');
 var userInput = process.argv.slice(3).join(" ");
 // console.log(userInput);
 
+
 // 0. CLI command operator
 
 var operator = process.argv[2];
@@ -49,20 +50,20 @@ function concertThis() {
     axios.get(queryUrl)
     .then(response => {
         if (!response.data[0]) {
-            console.log('=======================================================================');
-            console.log('No concert information found based on your request :(');
+            doubleLog('=======================================================================');
+            doubleLog('No concert information found based on your request :(');
         }
         // console.log(response.data);
         for (i=0; i<response.data.length; i++){
-            console.log('=======================================================================');
-            console.log('Venue Name: ' + response.data[i].venue.name);
+            doubleLog('=======================================================================');
+            doubleLog('Venue Name: ' + response.data[i].venue.name);
             if (!response.data[i].venue.region) {
-                console.log('Venue Location: ' + response.data[i].venue.city + ', ' + response.data[i].venue.country);
+                doubleLog('Venue Location: ' + response.data[i].venue.city + ', ' + response.data[i].venue.country);
             }
             else {
-                console.log('Venue Location: ' + response.data[i].venue.city + ', ' + response.data[i].venue.region + ', ' + response.data[i].venue.country);
+                doubleLog('Venue Location: ' + response.data[i].venue.city + ', ' + response.data[i].venue.region + ', ' + response.data[i].venue.country);
             }
-            console.log('Concert Time: ' + moment(response.data[i].datetime).format("L"));
+            doubleLog('Concert Time: ' + moment(response.data[i].datetime).format("L"));
         }
     });
 }
@@ -74,7 +75,6 @@ function concertThis() {
 function spotifyThisSong() {
 
     // access keys information
-    // (code from npmjs.com)
     var spotify = new Spotify(keys.spotify);
 
     if (!userInput) {
@@ -92,12 +92,15 @@ function spotifyThisSong() {
             i = 0;
         }
         // console.log(data);
-        console.log('=======================================================================');
-        console.log('Artist(s): ' + data.tracks.items[i].album.artists[0].name);
-        console.log('Song Name: ' + data.tracks.items[i].name);
-        console.log('Preview: ' + data.tracks.items[i].preview_url);
-        console.log('Album: ' + data.tracks.items[i].album.name);
-    });        
+        doubleLog('=======================================================================');
+        doubleLog('Artist(s): ' + data.tracks.items[i].album.artists[0].name);
+        doubleLog('Song Name: ' + data.tracks.items[i].name);
+        doubleLog('Preview: ' + data.tracks.items[i].preview_url);
+        doubleLog('Album: ' + data.tracks.items[i].album.name);
+    
+    });     
+    
+
 }
 
 // ========================================================================
@@ -115,16 +118,16 @@ function movieThis() {
     axios.get(queryUrl)
     .then(response => {
         // console.log(response.data)
-        console.log('=======================================================================');
-        console.log('Title: ' + response.data.Title);
-        console.log('Year Release: ' + response.data.Year);
-        console.log('Rating (IMDB): ' + response.data.imdbRating);
-        if (!response.data.Ratings[1]){console.log('Rating (Rotten Tomatoes): N/A');}
-        else {console.log('Rating (Rotten Tomatoes): ' + response.data.Ratings[1].Value);}
-        console.log('Country: ' + response.data.Country);
-        console.log('Language: ' + response.data.Language);
-        console.log('Plot: ' + response.data.Plot);
-        console.log('Actors: ' + response.data.Actors);
+        doubleLog('=======================================================================');
+        doubleLog('Title: ' + response.data.Title);
+        doubleLog('Year Release: ' + response.data.Year);
+        doubleLog('Rating (IMDB): ' + response.data.imdbRating);
+        if (!response.data.Ratings[1]){doubleLog('Rating (Rotten Tomatoes): N/A');}
+        else {doubleLog('Rating (Rotten Tomatoes): ' + response.data.Ratings[1].Value);}
+        doubleLog('Country: ' + response.data.Country);
+        doubleLog('Language: ' + response.data.Language);
+        doubleLog('Plot: ' + response.data.Plot);
+        doubleLog('Actors: ' + response.data.Actors);
     });
 }
 
@@ -137,15 +140,41 @@ function doWhatItSays() {
         if (error) {
             return console.log(error);
         }
-        console.log(data);
-        
-    });
+        // console.log(data);
+        var importInput = data.split(',');
 
-
-    fs.appendFile('./log.txt', 'test', 'utf8', function(err) {
-        if (err) {
-          return console.log(err);
+        userInput = importInput[1];
+        switch (importInput[0]) {
+            case 'concert-this':
+                concertThis();
+                break;
+            case 'spotify-this-song':
+                spotifyThisSong();
+                break;
+            case 'movie-this':
+                movieThis();
+                break;
         }
-
     });
+
 }
+
+// 5. log all response into log.txt
+
+// operator and userinput
+var commandLog = operator + " " + userInput;
+fs.appendFile('./log.txt', "\n" + commandLog + "\n", 'utf8', function(error) {
+    if (error) {
+      return console.log(error);
+    }
+});
+
+// apply console.log and fs.appendFile for all response data
+function doubleLog (input) {
+    console.log(input);
+    fs.appendFile("log.txt", input + "\n", 'utf8', function(error){
+        if (error) {
+            return console.log(error);
+        }
+    });
+};

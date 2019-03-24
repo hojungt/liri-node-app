@@ -33,9 +33,9 @@ switch (operator) {
     case 'movie-this':
         movieThis();
         break;
-    // case 'do-what-it-says':
-    //     doWhatItSays();
-    //     break;
+    case 'do-what-it-says':
+        doWhatItSays();
+        break;
 }
 
 // ========================================================================
@@ -131,3 +131,21 @@ function movieThis() {
 // ========================================================================
 // 4. node "do-what-it-says"
 
+function doWhatItSays() {
+
+    fs.readFile('./random.txt', 'utf8', (error, data) => {
+        if (error) {
+            return console.log(error);
+        }
+        console.log(data);
+        
+    });
+
+
+    fs.appendFile('./log.txt', 'test', 'utf8', function(err) {
+        if (err) {
+          return console.log(err);
+        }
+
+    });
+}

@@ -1,23 +1,23 @@
 # __LIRI NODE APP__
 
 #### LIRI Node App is a CLI (Command Line Node) application that takes in command parameters to gives back data by searching through designated APIs. LIRI will search songs in Spotify, concerts in Bands in Town, and movies in OMDB.
-##### 1. Start using LIRI Node App by downloading this repo. 
-##### 2. Type the following in your terminal or git bash:
-##### ```node liri <command> <keywords>```
+#### * Start using LIRI Node App by downloading this repo. 
+#### * Type the following in your terminal or git bash:
+#### ```node liri <command> <keywords>```
+#### * Once you have entered the command, the search result will appear below the command you have entered. 
+#### * Each search will be logged into file `log.txt`.
 
-##### Examples of `<command> <keywords>`:
-##### * `concert-this: bruno mars` 
-##### * `spotify-this-song: i will follow you into the dark` 
-##### * `movie-this: pride and prejudice`
-##### * `do-what-it-says`
+## Examples of `<command> <keywords>`:
+##### 1. `concert-this: bruno mars` 
+##### 2. `spotify-this-song: i will follow you into the dark` 
+##### 3. `movie-this: pride and prejudice`
+##### 4. `do-what-it-says`
 
-###### Note for each `<command>`
-###### If you don't type in a keyword for `concert-this`, a no-result message will show.
-###### If you don't type in a keyword for `spotify-this-song`, the default result is 'The Sign' by Ace of Base.
-###### If you don't type in a keyword for `movie-this`, the default result is 'Mr. Nobody'.
-###### Keyword is not used in `do-what-it-says`. However, you can change the desired `<command> <keywords>` combination in file `random.txt`.
-##### 3. Once you have entered the command, the search result will appear below the command you have entered. 
-##### 4. Each search will be logged into file `log.txt`.
+###### Notes on `<command>`:
+###### 1. If you don't type in a keyword for `concert-this`, a no-result message will show.
+###### 2. If you don't type in a keyword for `spotify-this-song`, the default result is 'The Sign' by Ace of Base.
+###### 3. If you don't type in a keyword for `movie-this`, the default result is 'Mr. Nobody'.
+###### 4. Keyword is not used in `do-what-it-says`. However, you can change the desired `<command> <keywords>` combination in file `random.txt`.
 
 ## Demo
 #### 

@@ -1,8 +1,7 @@
 # __LIRI NODE APP__
 
 #### LIRI Node App is a CLI (Command Line Node) application that takes in command parameters to gives back data by searching through designated APIs. LIRI will search songs in Spotify, concerts in Bands in Town, and movies in OMDB.
-#### 1. Start using LIRI Node App by downloading this repo. 
-#### 1. Type the following in your terminal or git bash:
+#### 1. Start using LIRI Node App by downloading this repo. 2. Type the following in your terminal or git bash:
 #### `node liri <command> <keywords>`
 
 #### Examples of `<command> <keywords>`:

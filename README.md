@@ -8,7 +8,7 @@
 #### * Each search will be logged into file `log.txt`.
 
 ## Demo
-!(liri-demo.gif)
+![](liri-demo.gif)
 
 ## Examples of Command-Line Input
 ##### 1. `concert-this: bruno mars` 

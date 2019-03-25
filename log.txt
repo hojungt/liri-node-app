@@ -1,4 +1,52 @@
 
+concert-this maroon 5
+=======================================================================
+Venue Name: Mollenpark
+Venue Location: Aalborg, Denmark
+Concert Time: 06/01/2019
+=======================================================================
+Venue Name: Lanxess Arena
+Venue Location: Cologne, Germany
+Concert Time: 06/03/2019
+=======================================================================
+Venue Name: O2 ARENA
+Venue Location: Prague, Czech Republic
+Concert Time: 06/05/2019
+=======================================================================
+Venue Name: Tauron Arena
+Venue Location: Kraków, Poland
+Concert Time: 06/06/2019
+=======================================================================
+Venue Name: Ziggo Dome
+Venue Location: Amsterdam, Netherlands
+Concert Time: 06/10/2019
+=======================================================================
+Venue Name: AccorHotels Arena
+Venue Location: Paris, France
+Concert Time: 06/11/2019
+=======================================================================
+Venue Name: Curacao North Sea Jazz Festival
+Venue Location: Curacao, Netherlands Antilles
+Concert Time: 08/31/2019
+
+spotify-this-song i will follow you into the dark
+=======================================================================
+Artist(s): Death Cab for Cutie
+Song Name: I Will Follow You Into The Dark
+Preview: https://p.scdn.co/mp3-preview/10db1aee9e759c9cdbe45a6fce67dc4eeb7ed83f?cid=9f01b92919314f38a1bb55a567098acf
+Album: Plans
+
+movie-this black panther
+=======================================================================
+Title: Black Panther
+Year Release: 2018
+Rating (IMDB): 7.3
+Rating (Rotten Tomatoes): 97%
+Country: USA
+Language: English, Swahili, Nama, Xhosa, Korean
+Plot: T'Challa, heir to the hidden but advanced kingdom of Wakanda, must step forward to lead his people into a new future and must confront a challenger from his country's past.
+Actors: Chadwick Boseman, Michael B. Jordan, Lupita Nyong'o, Danai Gurira
+
 do-what-it-says 
 =======================================================================
 Title: Arrival
@@ -9,10 +57,3 @@ Country: USA
 Language: English, Russian, Mandarin
 Plot: A linguist is recruited by the military to communicate with alien lifeforms after twelve mysterious spacecrafts land around the world.
 Actors: Amy Adams, Jeremy Renner, Forest Whitaker, Michael Stuhlbarg
-
-spotify-this-song i will follow you into the dark
-=======================================================================
-Artist(s): Death Cab for Cutie
-Song Name: I Will Follow You Into The Dark
-Preview: https://p.scdn.co/mp3-preview/10db1aee9e759c9cdbe45a6fce67dc4eeb7ed83f?cid=9f01b92919314f38a1bb55a567098acf
-Album: Plans
